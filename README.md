@@ -1,33 +1,44 @@
-# Splunk Visualization App Template
+#sunburst-splunk
 
-This is the basic template for a splunk visualization app. This teamplate is meant to be edited to build custom visualizations. It contains:
+Download splunk and install it
+[splunk](https://download.splunk.com/products/splunk/releases/7.3.2/windows/splunk-7.3.2-c60db69f8e32-x64-release.msi)
 
-- The relevant directory structure for a visuzliation app
-- A standin visualization package directory with a standin visualiztion and a basic webpack configuration
-- Relevant .conf files for the visualization
+During the installation it will ask you for a username and a password. Put in some username and password but make sure you remember it.
+Now this installation should start the splunk local server on your computer on port 8000.
 
-## Building the visualization
+Navigate to C:\Program Files\Splunk\etc\system\local.
+Create a new file called web.conf
+Enter the following configurations in the file:
+[settings]
+minify_js = False
+minify_css = False
+js_no_cache = True
+cacheEntriesLimit = 0
+cacheBytesLimit = 0
+enableWebDebug = True
 
-	NOTE: You must have npm installed in oder to build. If you do not have npm installed, install it and come back. 
-	
-The visualization contained in this app must be built using web pack in order to run it on Splunk. There is a basic webpack configuration built in to the app. To build from the command line, first, cd to the *visualization/standin* directory. On the first run you will have to install the dependeincies with npm:
+Navigate to you installation directory, for example (C:\Program Files\Splunk).
+Navigate to the bin folder and adminstrator command prompt.
+Enter the command splunk start.
+This should start the splunk server. (It takes some time, so hang on)
+IMPORTANT make sure nothing is running on port 8000. Or you can google and find out how to change the splunk port.
 
-```
-$ npm install
-```
-Once you done that, you can build the viz with the provided build task:
+Clone this project in C:\Program Files\Splunk\etc\apps
+After cloning navigate to \appserver\static\visualizations\radial_meter
+Open Adminstrator command prompt and enter the following commands.
 
-```
-$ npm run build
-```
+npm install
 
-This will create a *visualization.js* file in the visualization directory. 
+"C:/Program Files/Splunk/bin/splunk" cmd node ./node_modules/webpack/bin/webpack.js
 
-## Adding Your Own Code
+This should compile your code.
+Go to localhost:8000
+Enter the credentials you entered during the installation.
+Click on the search button on the left hand side.
+Enter the following in the input box:
 
-The standin viz isn't very interesting, so you will want to add your own code. You should rename the *visualization/src/standin.js* file to something appropriate, then you can edit it as you see fit. To build, you will have to change the `entry` variable in *visualization/webpack.config* to corespond to your new file name. Then you can run the build task again.
+| makeresults count = 60
+| stats count
 
-## More Information
-For more information on building custom visualizations including a tutorial, API overview, and more see:
-
-http://docs.splunk.com/Documentation/Splunk/6.5.0/AdvancedDev/CustomVizDevOverview
+Click on visualisation and then on a chart with the name radial-meter.
+You'll see the chart.
