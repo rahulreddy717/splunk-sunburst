@@ -25,8 +25,8 @@ This should start the splunk server. (It takes some time, so hang on)
 IMPORTANT make sure nothing is running on port 8000. Or you can google and find out how to change the splunk port.
 
 Clone this project in C:\Program Files\Splunk\etc\apps
-After cloning navigate to \appserver\static\visualizations\radial_meter
-Open Adminstrator command prompt and enter the following commands.
+After cloning navigate to splunk-sunburst\appserver\static\visualizations\radial_meter
+Open Adminstrator command prompt with above path and enter the following commands.
 
 # npm install
 
