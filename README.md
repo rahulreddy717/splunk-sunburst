@@ -9,13 +9,14 @@ Now this installation should start the splunk local server on your computer on p
 Navigate to C:\Program Files\Splunk\etc\system\local.
 Create a new file called web.conf
 Enter the following configurations in the file:
-[settings]
-minify_js = False
-minify_css = False
-js_no_cache = True
-cacheEntriesLimit = 0
-cacheBytesLimit = 0
-enableWebDebug = True
+
+# [settings]
+# minify_js = False
+# minify_css = False
+# js_no_cache = True
+# cacheEntriesLimit = 0
+# cacheBytesLimit = 0
+# enableWebDebug = True
 
 Navigate to you installation directory, for example (C:\Program Files\Splunk).
 Navigate to the bin folder and adminstrator command prompt.
@@ -27,9 +28,9 @@ Clone this project in C:\Program Files\Splunk\etc\apps
 After cloning navigate to \appserver\static\visualizations\radial_meter
 Open Adminstrator command prompt and enter the following commands.
 
-npm install
+# npm install
 
-"C:/Program Files/Splunk/bin/splunk" cmd node ./node_modules/webpack/bin/webpack.js
+# "C:/Program Files/Splunk/bin/splunk" cmd node ./node_modules/webpack/bin/webpack.js
 
 This should compile your code.
 Go to localhost:8000
