@@ -1,4 +1,4 @@
-#sunburst-splunk
+# sunburst-splunk
 
 Download splunk and install it
 [splunk](https://download.splunk.com/products/splunk/releases/7.3.2/windows/splunk-7.3.2-c60db69f8e32-x64-release.msi)
